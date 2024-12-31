@@ -1,0 +1,2 @@
+# TypeEasy_Screenshot_Forge
+这是一个用于伪造金山打字通2016版本打完截图的工具
