@@ -88,6 +88,7 @@
             this.button3.TabIndex = 0;
             this.button3.Text = "中文";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button1
             // 
@@ -98,6 +99,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "保存图片";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -106,8 +108,9 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(204, 27);
             this.button2.TabIndex = 3;
-            this.button2.Text = "刷新随机";
+            this.button2.Text = "刷新";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // textBox1
             // 
@@ -120,6 +123,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(77, 20);
             this.textBox1.TabIndex = 4;
+            this.textBox1.Text = "xx分xx秒";
             // 
             // textBox2
             // 
@@ -132,6 +136,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(70, 20);
             this.textBox2.TabIndex = 5;
+            this.textBox2.Text = "xx字";
             // 
             // textBox3
             // 
@@ -144,6 +149,8 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(97, 20);
             this.textBox3.TabIndex = 6;
+            this.textBox3.Text = "xx字/分";
+            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // textBox4
             // 
@@ -156,6 +163,7 @@
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(57, 20);
             this.textBox4.TabIndex = 7;
+            this.textBox4.Text = "xx%";
             // 
             // label1
             // 
@@ -190,7 +198,7 @@
             this.pictureBox2.TabIndex = 10;
             this.pictureBox2.TabStop = false;
             // 
-            // Form1
+            // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -207,7 +215,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pictureBox1);
             this.MaximizeBox = false;
-            this.Name = "Form1";
+            this.Name = "Main";
             this.Text = "金山打字通截图伪造器";
             this.Load += new System.EventHandler(this.Main_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
