@@ -73,8 +73,24 @@ namespace TypeEasy_Screenshot_Forge
         private void button3_Click(object sender, EventArgs e)
         {
 
-        }
+            Random rand = new Random();
+            int time_min = randint(15,30,rand);
+            int time_sec = randint(0, 60, rand);
+            int words = randint(500, 1000, rand);
+            int speed = randint(25, 50, rand);
+            int rate = randint(95, 100, rand);
+            this.textBox1.Text = time_min.ToString()+'分'+ time_sec.ToString()+'秒';
+            this.textBox2.Text = words.ToString() + '字';
+            this.textBox3.Text = speed.ToString() + "字/分";
+            this.textBox4.Text = rate.ToString() + '%';
 
+
+
+        }
+        static int randint(int minValue, int maxValue, Random rand)
+        {
+            return rand.Next(minValue, maxValue + 1); // maxValue + 1因为Next的上限是最大值不包括maxValue
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             // 获取 pictureBox1 的位置和大小
@@ -113,6 +129,20 @@ namespace TypeEasy_Screenshot_Forge
                     MessageBox.Show($"保存文件时发生错误: {ex.Message}", "保存失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Random rand = new Random();
+            int time_min = randint(10, 20, rand);
+            int time_sec = randint(0, 60, rand);
+            int words = randint(1000, 2000, rand);
+            int speed = randint(50, 100, rand);
+            int rate = randint(95, 100, rand);
+            this.textBox1.Text = time_min.ToString() + '分' + time_sec.ToString() + '秒';
+            this.textBox2.Text = words.ToString() + '字';
+            this.textBox3.Text = speed.ToString() + "字/分";
+            this.textBox4.Text = rate.ToString() + '%';
         }
     }
 }
