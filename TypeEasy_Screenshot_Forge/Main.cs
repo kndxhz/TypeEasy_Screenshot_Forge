@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.Linq.Expressions;
 using System.IO;
+using System.Threading;
 
 namespace TypeEasy_Screenshot_Forge
 {
@@ -101,47 +102,61 @@ namespace TypeEasy_Screenshot_Forge
 
         private async void button1_Click(object sender, EventArgs e)
         {
-            // 获取 pictureBox1 的位置和大小
-            Rectangle rect = pictureBox1.Bounds;
-
             // 异步执行截图任务
             await Task.Run(() =>
             {
+                // 使用Invoke将操作调度到UI线程
+                Rectangle rect = (Rectangle)this.Invoke((Func<Rectangle>)(() => pictureBox1.Bounds));
+
                 // 创建一个与控件区域大小相同的 Bitmap 对象
                 Bitmap screenshot = new Bitmap(rect.Width, rect.Height);
 
                 // 创建一个 Graphics 对象用于从屏幕复制图像
                 using (Graphics g = Graphics.FromImage(screenshot))
                 {
+                    // 使用Invoke获取 pictureBox1 的屏幕坐标
+                    Point location = (Point)this.Invoke((Func<Point>)(() => pictureBox1.PointToScreen(Point.Empty)));
+
                     // 获取控件所在区域的屏幕截图
-                    g.CopyFromScreen(pictureBox1.PointToScreen(Point.Empty), Point.Empty, rect.Size);
+                    g.CopyFromScreen(location, Point.Empty, rect.Size);
                 }
 
-                // 创建并显示文件保存对话框
-                SaveFileDialog saveFileDialog = new SaveFileDialog
+                // 创建一个新的 STA 线程来处理文件对话框
+                Thread staThread = new Thread(() =>
                 {
-                    FileName = "捕获.png", // 默认文件名
-                    Filter = "PNG Image (*.png)|*.png|All files (*.*)|*.*", // 文件类型过滤
-                    DefaultExt = "png", // 默认扩展名
-                    AddExtension = true // 自动添加扩展名
-                };
+                    // 创建并显示文件保存对话框
+                    SaveFileDialog saveFileDialog = new SaveFileDialog
+                    {
+                        FileName = "捕获.png", // 默认文件名
+                        Filter = "PNG Image (*.png)|*.png|All files (*.*)|*.*", // 文件类型过滤
+                        DefaultExt = "png", // 默认扩展名
+                        AddExtension = true // 自动添加扩展名
+                    };
 
-                // 显示保存文件对话框，如果用户选择了文件
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    try
+                    // 显示保存文件对话框，如果用户选择了文件
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
                     {
-                        // 将截图保存为 PNG 文件
-                        screenshot.Save(saveFileDialog.FileName, System.Drawing.Imaging.ImageFormat.Png);
-                        MessageBox.Show("截图已保存", "保存成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        try
+                        {
+                            // 将截图保存为 PNG 文件
+                            screenshot.Save(saveFileDialog.FileName, System.Drawing.Imaging.ImageFormat.Png);
+                            MessageBox.Show("截图已保存", "保存成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"保存文件时发生错误: {ex.Message}", "保存失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"保存文件时发生错误: {ex.Message}", "保存失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
+                });
+
+                // 设置为 STA 模式
+                staThread.SetApartmentState(ApartmentState.STA);
+                staThread.Start();
+                staThread.Join();  // 等待线程完成
             });
         }
+
+
 
         private void button4_Click(object sender, EventArgs e)
         {
