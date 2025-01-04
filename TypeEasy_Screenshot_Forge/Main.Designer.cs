@@ -35,13 +35,14 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.button5 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -94,9 +95,9 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button1.Location = new System.Drawing.Point(12, 400);
+            this.button1.Location = new System.Drawing.Point(118, 400);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(204, 46);
+            this.button1.Size = new System.Drawing.Size(98, 46);
             this.button1.TabIndex = 2;
             this.button1.Text = "保存图片";
             this.button1.UseVisualStyleBackColor = true;
@@ -113,19 +114,6 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(241)))), ((int)(((byte)(183)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("微软雅黑", 11F);
-            this.textBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(120)))), ((int)(((byte)(39)))));
-            this.textBox1.Location = new System.Drawing.Point(100, 172);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(77, 20);
-            this.textBox1.TabIndex = 4;
-            this.textBox1.Text = "xx分xx秒";
-            // 
             // textBox2
             // 
             this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(241)))), ((int)(((byte)(183)))));
@@ -133,11 +121,12 @@
             this.textBox2.Font = new System.Drawing.Font("微软雅黑", 11F);
             this.textBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(120)))), ((int)(((byte)(39)))));
             this.textBox2.Location = new System.Drawing.Point(220, 172);
-            this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(70, 20);
             this.textBox2.TabIndex = 5;
             this.textBox2.Text = "xx字";
+            this.textBox2.WordWrap = false;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // textBox3
             // 
@@ -146,11 +135,11 @@
             this.textBox3.Font = new System.Drawing.Font("微软雅黑", 11F);
             this.textBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(120)))), ((int)(((byte)(39)))));
             this.textBox3.Location = new System.Drawing.Point(333, 172);
-            this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(97, 20);
             this.textBox3.TabIndex = 6;
             this.textBox3.Text = "xx字/分";
+            this.textBox3.WordWrap = false;
             this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // textBox4
@@ -160,11 +149,12 @@
             this.textBox4.Font = new System.Drawing.Font("微软雅黑", 11F);
             this.textBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(120)))), ((int)(((byte)(39)))));
             this.textBox4.Location = new System.Drawing.Point(484, 172);
-            this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(57, 20);
             this.textBox4.TabIndex = 7;
             this.textBox4.Text = "xx%";
+            this.textBox4.WordWrap = false;
+            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // label1
             // 
@@ -193,12 +183,36 @@
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(252)))), ((int)(((byte)(255)))));
+            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Default;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(43, 285);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(408, 69);
+            this.pictureBox2.Size = new System.Drawing.Size(247, 63);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox2.TabIndex = 10;
             this.pictureBox2.TabStop = false;
+            // 
+            // button5
+            // 
+            this.button5.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button5.Location = new System.Drawing.Point(14, 400);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(98, 46);
+            this.button5.TabIndex = 11;
+            this.button5.Text = "帮助";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // label3
+            // 
+            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(241)))), ((int)(((byte)(183)))));
+            this.label3.Font = new System.Drawing.Font("微软雅黑", 11F);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(120)))), ((int)(((byte)(39)))));
+            this.label3.Location = new System.Drawing.Point(100, 172);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(77, 20);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "xx分xx秒";
             // 
             // Main
             // 
@@ -206,13 +220,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(611, 491);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
@@ -237,13 +252,14 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label label3;
     }
 }
 

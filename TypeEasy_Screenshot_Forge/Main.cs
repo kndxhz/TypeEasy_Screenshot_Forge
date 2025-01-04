@@ -45,7 +45,7 @@ namespace TypeEasy_Screenshot_Forge
             Task.Run(() =>
             {
                 int speed = (int)ExtractConsecutiveIntegers(this.textBox3.Text);
-                this.Invoke((Action)(() =>
+                _ = this.Invoke((Action)(() =>
                 {
                     this.label1.Text = ((int)(speed * (ExtractConsecutiveIntegers(this.textBox4.Text) * 0.01))).ToString() + "字/分";
                     int value = (int)ExtractConsecutiveIntegers(this.textBox3.Text);
@@ -60,18 +60,48 @@ namespace TypeEasy_Screenshot_Forge
                         this.label2.Text = "二级（共十级）";
                         pictureBox2.Image = Image.FromStream(new MemoryStream(Properties.Resources.二级));
                     }
-                    else if (value >= 100)
+                    else if (value < 150)
                     {
                         this.label2.Text = "三级（共十级）";
                         pictureBox2.Image = Image.FromStream(new MemoryStream(Properties.Resources.三级));
                     }
+                    else if (value < 200)
+                    {
+                        this.label2.Text = "四级（共十级）";
+                        pictureBox2.Image = Image.FromStream(new MemoryStream(Properties.Resources.四级));
+                    }
+                    else if (value >= 200)
+                    {
+                        this.label2.Text = "五级（共十级）";
+                        pictureBox2.Image = Image.FromStream(new MemoryStream(Properties.Resources.五级));
+                    }
+                    // 获取文章字数和时间
+                    int wordCount = (int)ExtractConsecutiveIntegers(this.textBox2.Text);
+                    int duration = (int)ExtractConsecutiveIntegers(this.textBox3.Text);
+                    if (wordCount==0 || duration ==0){
+                        label3.Text = "0分0秒";
+                        return;
+                    }
+                    // 计算结果
+                    double time = (double)wordCount / duration; // 每单位时间的字数
+                    int time_min = (int)time; // 取整的分钟数
+                    int time_sec = (int)((time - time_min) * 60); // 计算剩余秒数
+
+                    // 显示结果
+                    this.label3.Text = $"{time_min}分{time_sec}秒"; // 显示分钟和秒
+
+
+
                 }));
             });
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            textBox3_TextChanged(textBox3, EventArgs.Empty);
+            Task.Run(() =>
+            {
+                textBox3_TextChanged(textBox3, EventArgs.Empty);
+            });
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -79,15 +109,12 @@ namespace TypeEasy_Screenshot_Forge
             Task.Run(() =>
             {
                 Random rand = new Random();
-                int time_min = randint(15, 30, rand);
-                int time_sec = randint(0, 60, rand);
-                int words = randint(500, 1000, rand);
+                int words = randint(1000, 1500, rand);
                 int speed = randint(25, 50, rand);
                 int rate = randint(95, 100, rand);
 
                 this.Invoke((Action)(() =>
                 {
-                    this.textBox1.Text = time_min.ToString() + '分' + time_sec.ToString() + '秒';
                     this.textBox2.Text = words.ToString() + '字';
                     this.textBox3.Text = speed.ToString() + "字/分";
                     this.textBox4.Text = rate.ToString() + '%';
@@ -163,20 +190,49 @@ namespace TypeEasy_Screenshot_Forge
             Task.Run(() =>
             {
                 Random rand = new Random();
-                int time_min = randint(10, 20, rand);
-                int time_sec = randint(0, 60, rand);
-                int words = randint(1000, 2000, rand);
+                int words = randint(1000, 3000, rand);
                 int speed = randint(50, 100, rand);
                 int rate = randint(95, 100, rand);
 
                 this.Invoke((Action)(() =>
                 {
-                    this.textBox1.Text = time_min.ToString() + '分' + time_sec.ToString() + '秒';
                     this.textBox2.Text = words.ToString() + '字';
                     this.textBox3.Text = speed.ToString() + "字/分";
                     this.textBox4.Text = rate.ToString() + '%';
                 }));
             });
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+            Task.Run(() =>
+            {
+                textBox3_TextChanged(textBox3, EventArgs.Empty);
+            });
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            Task.Run(() =>
+            {
+                textBox3_TextChanged(textBox3, EventArgs.Empty);
+            });
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(
+                "字数、速度、正确率都可以自己点击输入\n" +
+                "总速度、时间和等级是自动计算，不可输入\n" +
+                "嫌麻烦的可以直接使用预设，只需要改个字数就行\n" +
+                "如果出现计算错误请点击刷新\n" +
+                "直接按保存图片就可以截图了\n\n" +
+                "github.com/kndxhz/TypeEasy_Screenshot_Forge",
+                "帮助", // 标题
+                MessageBoxButtons.OK, // 按钮
+                MessageBoxIcon.Question // 问号图标
+            );
+
         }
     }
 }

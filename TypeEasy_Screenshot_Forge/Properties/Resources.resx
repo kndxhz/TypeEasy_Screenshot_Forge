@@ -127,4 +127,10 @@
   <data name="二级" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\二级.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="五级" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\五级.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="四级" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\四级.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

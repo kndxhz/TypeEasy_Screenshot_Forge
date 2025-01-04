@@ -89,5 +89,25 @@ namespace TypeEasy_Screenshot_Forge.Properties {
                 return ((byte[])(obj));
             }
         }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        internal static byte[] 五级 {
+            get {
+                object obj = ResourceManager.GetObject("五级", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        internal static byte[] 四级 {
+            get {
+                object obj = ResourceManager.GetObject("四级", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }
