@@ -164,9 +164,9 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(119)))), ((int)(((byte)(10)))));
             this.label1.Location = new System.Drawing.Point(112, 113);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 38);
+            this.label1.Size = new System.Drawing.Size(146, 38);
             this.label1.TabIndex = 8;
-            this.label1.Text = "xx字/分";
+            this.label1.Text = "xx字/分钟";
             // 
             // label2
             // 

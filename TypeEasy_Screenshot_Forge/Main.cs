@@ -47,7 +47,7 @@ namespace TypeEasy_Screenshot_Forge
                 int speed = (int)ExtractConsecutiveIntegers(this.textBox3.Text);
                 _ = this.Invoke((Action)(() =>
                 {
-                    this.label1.Text = ((int)(speed * (ExtractConsecutiveIntegers(this.textBox4.Text) * 0.01))).ToString() + "字/分";
+                    this.label1.Text = ((int)(speed * (ExtractConsecutiveIntegers(this.textBox4.Text) * 0.01))).ToString() + "字/分钟";
                     int value = (int)ExtractConsecutiveIntegers(this.textBox3.Text);
 
                     if (value < 50)
