@@ -4,4 +4,4 @@
 - 在[发行版](https://github.com/kndxhz/TypeEasy_Screenshot_Forge/releases/)下载
 - 访问 https://kndxhz.cn/jinshan.html 在线下载
 # 截图
-![image](https://github.com/user-attachments/assets/47084b81-7081-4d5d-a9fc-0ad7e591a229)
+![image](https://github.com/user-attachments/assets/5f5877eb-c8b0-4870-818c-e0aef99a389b)
